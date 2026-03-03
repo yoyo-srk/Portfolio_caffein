@@ -1,0 +1,355 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   FONT-FACE DECLARATIONS
+   ============================================================ */
+
+@font-face {
+  font-family: "Sora";
+  src: url("/assets/fonts/Sora-VariableFont_wght.woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans-VariableFont_wght.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono-VariableFont_wght.woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================================
+   DESIGN TOKENS — DARK MODE (default)
+   ============================================================ */
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+    /* Backgrounds */
+    --background: 15% 0.01 270;
+    --foreground: 96% 0.005 0;
+    --card: 18% 0.015 270;
+    --card-foreground: 96% 0.005 0;
+    --popover: 18% 0.015 270;
+    --popover-foreground: 96% 0.005 0;
+    /* Brand colors */
+    --primary: 72% 0.24 290;
+    --primary-foreground: 100% 0 0;
+    --secondary: 65% 0.2 220;
+    --secondary-foreground: 100% 0 0;
+    --accent: 75% 0.25 192;
+    --accent-foreground: 12% 0.03 270;
+    /* Neutrals */
+    --muted: 22% 0.01 270;
+    --muted-foreground: 60% 0.005 0;
+    --border: 25% 0.01 270;
+    --input: 20% 0.01 270;
+    --ring: 72% 0.24 290;
+    /* Destructive */
+    --destructive: 55% 0.22 25;
+    --destructive-foreground: 100% 0 0;
+    /* Charts */
+    --chart-1: 72% 0.24 290;
+    --chart-2: 65% 0.2 220;
+    --chart-3: 75% 0.25 192;
+    --chart-4: 70% 0.18 150;
+    --chart-5: 68% 0.22 25;
+    /* Sidebar */
+    --sidebar: 18% 0.015 270;
+    --sidebar-foreground: 96% 0.005 0;
+    --sidebar-primary: 72% 0.24 290;
+    --sidebar-primary-foreground: 100% 0 0;
+    --sidebar-accent: 22% 0.01 270;
+    --sidebar-accent-foreground: 96% 0.005 0;
+    --sidebar-border: 25% 0.01 270;
+    --sidebar-ring: 72% 0.24 290;
+  }
+
+  /* Light mode override */
+  .light {
+    --background: 98% 0.005 270;
+    --foreground: 12% 0.02 270;
+    --card: 96% 0.008 270;
+    --card-foreground: 12% 0.02 270;
+    --popover: 96% 0.008 270;
+    --popover-foreground: 12% 0.02 270;
+    --primary: 55% 0.22 290;
+    --primary-foreground: 100% 0 0;
+    --secondary: 48% 0.18 220;
+    --secondary-foreground: 100% 0 0;
+    --accent: 58% 0.2 192;
+    --accent-foreground: 100% 0 0;
+    --muted: 92% 0.01 270;
+    --muted-foreground: 45% 0.01 270;
+    --border: 85% 0.01 270;
+    --input: 90% 0.01 270;
+    --ring: 55% 0.22 290;
+    --destructive: 55% 0.22 25;
+    --destructive-foreground: 100% 0 0;
+    --chart-1: 55% 0.22 290;
+    --chart-2: 48% 0.18 220;
+    --chart-3: 58% 0.2 192;
+    --chart-4: 50% 0.16 150;
+    --chart-5: 52% 0.18 25;
+    --sidebar: 96% 0.008 270;
+    --sidebar-foreground: 12% 0.02 270;
+    --sidebar-primary: 55% 0.22 290;
+    --sidebar-primary-foreground: 100% 0 0;
+    --sidebar-accent: 92% 0.01 270;
+    --sidebar-accent-foreground: 12% 0.02 270;
+    --sidebar-border: 85% 0.01 270;
+    --sidebar-ring: 55% 0.22 290;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+}
+
+/* ============================================================
+   GLOBAL UTILITIES
+   ============================================================ */
+
+@layer utilities {
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, oklch(72% 0.24 290), oklch(65% 0.2 220), oklch(75% 0.25 192));
+  }
+
+  .gradient-text-warm {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, oklch(75% 0.25 192), oklch(65% 0.2 220));
+  }
+
+  /* Glassmorphism */
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Neon glow shadows */
+  .glow-purple {
+    box-shadow: 0 0 20px oklch(72% 0.24 290 / 0.35), 0 0 60px oklch(72% 0.24 290 / 0.15);
+  }
+
+  .glow-blue {
+    box-shadow: 0 0 20px oklch(65% 0.2 220 / 0.35), 0 0 60px oklch(65% 0.2 220 / 0.15);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 20px oklch(75% 0.25 192 / 0.35), 0 0 60px oklch(75% 0.25 192 / 0.15);
+  }
+
+  /* Animated gradient border */
+  .gradient-border {
+    position: relative;
+  }
+
+  .gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, oklch(72% 0.24 290), oklch(65% 0.2 220), oklch(75% 0.25 192));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: borderRotate 4s linear infinite;
+  }
+
+  /* Text size utilities */
+  .font-display {
+    font-family: "Sora", system-ui, sans-serif;
+  }
+
+  .font-mono-custom {
+    font-family: "JetBrains Mono", "Courier New", monospace;
+  }
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+
+@keyframes borderRotate {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-cursor {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes bounce-down {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes preloader-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes draw-line {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes blob-move {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -20px) scale(1.05);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+}
+
+/* ============================================================
+   CUSTOM SCROLLBAR
+   ============================================================ */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: oklch(15% 0.01 270);
+}
+
+::-webkit-scrollbar-thumb {
+  background: oklch(72% 0.24 290 / 0.4);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(72% 0.24 290 / 0.7);
+}
+
+/* ============================================================
+   SELECTION
+   ============================================================ */
+
+::selection {
+  background: oklch(72% 0.24 290 / 0.3);
+  color: oklch(96% 0.005 0);
+}
